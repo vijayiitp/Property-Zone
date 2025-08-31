@@ -31,8 +31,8 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ product }) => {
   const {
-    id,
-    _id,
+    // id,
+    // _id,
     name,
     price,
     discountedPrice,
