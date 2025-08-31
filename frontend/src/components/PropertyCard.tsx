@@ -4,6 +4,7 @@ import { MapPin, Bed, Bath, Square, Heart, Eye, Star } from "lucide-react";
 import { useSelector,useDispatch  } from "react-redux";
 import { RootState } from "../app/store";
 import { deleteProperty } from "../features/property/PropertySlice";
+import type { AppDispatch } from "../app/store"
 interface PropertyCardProps {
   product: {
     id?: string;
@@ -52,7 +53,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ product }) => {
   const mainImage = image;
   const user = useSelector((state: RootState) => state.auth.user);
   const ownerId = user?._id;
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const handleRemove = (id: string) => {
   dispatch(deleteProperty(id));
 };
