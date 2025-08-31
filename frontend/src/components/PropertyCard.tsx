@@ -8,7 +8,7 @@ import type { AppDispatch } from "../app/store"
 interface PropertyCardProps {
   product: {
     id?: string;
-    _id?: string;
+    _id: string;
     name: string;
     price: number;
     discountedPrice?: number;
@@ -31,8 +31,8 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ product }) => {
   const {
-    // id,
-    // _id,
+    id,
+    _id,
     name,
     price,
     discountedPrice,
@@ -54,8 +54,8 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ product }) => {
   const user = useSelector((state: RootState) => state.auth.user);
   const ownerId = user?._id;
   const dispatch = useDispatch<AppDispatch>();
-  const handleRemove = (id: string) => {
-  dispatch(deleteProperty(id));
+  const handleRemove = (_id: string) => {
+  dispatch(deleteProperty(_id));
 };
   const isDiscounted = discountedPrice && discountedPrice < price;
   const discountPercentage = isDiscounted
