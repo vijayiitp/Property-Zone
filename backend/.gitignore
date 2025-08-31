@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# environment
+# prevent env + credentials
+*.env
+backend/utility/awssetup.js
+
+
+# logs
+logs/
+uploads/
+
+# build
+dist/
+build/
