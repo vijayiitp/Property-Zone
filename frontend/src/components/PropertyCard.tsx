@@ -7,7 +7,6 @@ import { deleteProperty } from "../features/property/PropertySlice";
 import type { AppDispatch } from "../app/store"
 interface PropertyCardProps {
   product: {
-    id?: string;
     _id: string;
     name: string;
     price: number;
@@ -31,8 +30,7 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ product }) => {
   const {
-    // id,
-    // _id,
+    _id,
     name,
     price,
     discountedPrice,
@@ -54,8 +52,8 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ product }) => {
   const user = useSelector((state: RootState) => state.auth.user);
   const ownerId = user?._id;
   const dispatch = useDispatch<AppDispatch>();
-  const handleRemove = (_id: string) => {
-  dispatch(deleteProperty(_id));
+  const handleRemove = (id: string) => {
+  dispatch(deleteProperty(id));
 };
   const isDiscounted = discountedPrice && discountedPrice < price;
   const discountPercentage = isDiscounted
@@ -224,7 +222,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ product }) => {
         {/* Action Button */}
         {ownerId === userId ? (
           <button
-            onClick={() => handleRemove(product._id)}
+            onClick={() => handleRemove(_id)}
             className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-4 rounded-lg font-medium hover:from-red-700 hover:to-red-800 transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg"
           >
             Remove Property
