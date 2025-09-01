@@ -20,20 +20,12 @@ console.log("Bucket:", process.env.AWS_BUCKET_NAME);
 console.log("Key:", process.env.AWS_ACCESS_KEY_ID ? "Loaded" : "Missing");
 console.log("Secret:", process.env.AWS_SECRET_ACCESS_KEY ? "Loaded" : "Missing");
 
-// app.use(
-//   cors({
-//     origin:true, 
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     allowedHeaders: ["Content-Type", "Authorization"],
-//     credentials: true,  
-//   })
-// );
 
 app.use(
   cors({
      origin: [
       "http://localhost:5173",  // for local dev
-      "https://property-zone-okkvtcke0-vijayiitps-projects.vercel.app/login"    // for inside Docker
+      "https://property-zone-h48kc1eqg-vijayiitps-projects.vercel.app"   
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -48,7 +40,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/user", userRoute);
-// app.use("/api/v1/seller", userRoute);
 
 app.listen(process.env.PORT || 8000, "0.0.0.0", () => {
   console.log(`Server running on port ${process.env.PORT || 8000}`);
