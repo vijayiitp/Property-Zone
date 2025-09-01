@@ -13,7 +13,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=8000
-      - MONGODB_URI=mongodb+srv://shrivasv671:RBaVPMX9nlzSPtQc@cluster0.ra6sqlr.mongodb.net/BSRDB?retryWrites=true&w=majority
+      - MONGODB_URI=
     volumes:
       - ./backend/uploads:/app/uploads
       - ./backend/logs:/app/logs
