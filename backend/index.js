@@ -19,7 +19,7 @@ app.use(
   cors({
      origin: [
       "http://localhost:5173",  // for local dev
-      "https://property-zone-pearl.vercel.app"   
+      "http://frontend:5173"    // for inside Docker
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
