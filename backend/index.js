@@ -15,12 +15,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-console.log("Region:", process.env.AWS_REGION);
-console.log("Bucket:", process.env.AWS_BUCKET_NAME);
-console.log("Key:", process.env.AWS_ACCESS_KEY_ID ? "Loaded" : "Missing");
-console.log("Secret:", process.env.AWS_SECRET_ACCESS_KEY ? "Loaded" : "Missing");
-
-
 app.use(
   cors({
      origin: [
