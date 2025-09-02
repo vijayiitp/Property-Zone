@@ -19,7 +19,7 @@ app.use(
   cors({
      origin: [
       "http://localhost:5173",  // for local dev
-      "https://property-zone-h48kc1eqg-vijayiitps-projects.vercel.app"   
+      "https://property-zone-pearl.vercel.app"   
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
