@@ -15,7 +15,6 @@ const SignUp = async (req, res) => {
         .json({ message: "User already exists", status: "error" });
     }
 
-    // Create new user (password will be hashed by pre-save hook)
     const user = new User({
       name,
       category,
@@ -25,8 +24,6 @@ const SignUp = async (req, res) => {
     });
 
     await user.save();
-
-    // Create JWT token
     const token = jwt.sign(
       { userId: user._id, email: user.email, category: user.category },
       process.env.JWT_SECRET,
@@ -61,9 +58,7 @@ const SignUp = async (req, res) => {
 const SignIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(req.body);
     const user = await User.findOne({ email });
-    console.log(user);
     if (!user) {
       return res.status(401).json({
         message: "Invalid email or password",

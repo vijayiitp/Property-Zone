@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SignUpForm from "./SignUp";
 import SignInForm from "./Login";
+import logo from "../assets/logo.png";
 
 
 const AuthToggler = () => {
@@ -34,8 +35,8 @@ const AuthToggler = () => {
         <p className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img
             className="w-fit text-center h-18"
-            src="./logo.png"
-            alt="logo"
+            src={logo}
+            alt="loading"
           />
         </p>
         {/* Toggle Buttons */}

@@ -6,6 +6,7 @@ import { RootState } from "../app/store";
 import { useAppDispatch } from "../app/hooks";
 import RightSidebar from "./SideBar";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.png";
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function Header() {
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <img src="./logo.png" className="h-10" alt="loading" />
+        <img src={`${logo}`} className="h-10" alt="loading" />
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {isLoggedIn ? (

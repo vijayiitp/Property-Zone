@@ -1,14 +1,12 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/auth/authSlice";
 import { Navigate } from "react-router-dom";
 import { RootState } from "../app/store";
 
 export default function Login() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
@@ -52,18 +50,12 @@ export default function Login() {
       );
 
       if (response.status === 200) {
-        // Securely fetch user info from /me
-        const meRes = await axios.get(
-          `${import.meta.env.VITE_SERVER}/api/v1/user/me`,
-          { withCredentials: true }
-        );
-
-        const user = meRes.data.user;
+        console.log("Login response:", response);
+        const user = response.data.user;
         dispatch(login({ user }));
-        toast.success("Login successful!");
-        navigate("/");
+        toast.success("Login successful!")
       }
-    } catch (err) {
+    } catch (error) {
       toast.error("Invalid credentials or server error");
     }
   };
@@ -75,7 +67,7 @@ export default function Login() {
         <div>
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >
             Your email
           </label>
@@ -96,7 +88,7 @@ export default function Login() {
         <div>
           <label
             htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >
             Password
           </label>
@@ -118,14 +110,6 @@ export default function Login() {
         >
           Login
         </button>
-        <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-          <Link
-            to="/signup"
-            className="font-medium text-teal-300 hover:underline dark:text-teal-500"
-          >
-            Don't have an account? Register here
-          </Link>
-        </p>
       </form>
     </>
   );

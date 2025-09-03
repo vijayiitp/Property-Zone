@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-
 interface FormData {
   name: string;
   category: string;
@@ -54,36 +52,42 @@ const SignUp: React.FC = () => {
     return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      if (!validator(formData)) {
-        return;
-      }
-      const response = await axios.post(
-        `${import.meta.env.VITE_SERVER}/api/v1/user/register/`,
-        formData
-      );
-      if (response.status === 201) {
-        toast.success("Account created successfully!");
-        navigate("/login");
-      } else {
-        toast.error("Failed to create account. Please try again.");
-      }
-    } catch (error: any) {
-      console.error("Failed to create account. Please try again.", error);
-      toast.error(error.response?.data?.message || "Failed to create account. Please try again.");
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  try {
+    if (!validator(formData)) {
+      toast.error("Invalid input!");
+      return;
     }
-  };
+
+    const response = await axios.post(
+      `${import.meta.env.VITE_SERVER}/api/v1/user/register/`,
+      formData
+    );
+
+    console.log("Signup response:", response);
+
+    if (response.status === 200 || response.status === 201) {
+      toast.success("Account created successfully!");
+      navigate("/");
+    } else {
+      toast.error("Failed to create account. Please try again.");
+    }
+  } catch (error: any) {
+    console.error("Signup error:", error);
+    toast.error(error.response?.data?.message || "Failed to create account. Please try again.");
+  }
+};
+
 
   return (
     <>
       <Toaster />
-      <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 w-full max-w-md mx-auto">
+      <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4 w-full max-w-md mx-auto">
         <div>
           <label
             htmlFor="name"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >
             Name
           </label>
@@ -105,7 +109,7 @@ const SignUp: React.FC = () => {
         <div>
           <label
             htmlFor="category"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >
             Category
           </label>
@@ -127,7 +131,7 @@ const SignUp: React.FC = () => {
         <div>
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >
             Email Address
           </label>
@@ -148,7 +152,7 @@ const SignUp: React.FC = () => {
         <div>
           <label
             htmlFor="contactNumber"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >
             Contact Number
           </label>
@@ -169,7 +173,7 @@ const SignUp: React.FC = () => {
         <div>
           <label
             htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >
             Password
           </label>
@@ -193,16 +197,6 @@ const SignUp: React.FC = () => {
         >
           Create Account
         </button>
-        
-        <p className="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-          Already have an account?{" "}
-          <Link
-            to="/login"
-            className="font-medium text-teal-600 hover:text-teal-500 hover:underline dark:text-teal-400"
-          >
-            Sign in here
-          </Link>
-        </p>
       </form>
     </>
   );

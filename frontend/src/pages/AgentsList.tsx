@@ -118,7 +118,7 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => (
 );
 
 const AgentCard: React.FC<{ agent: Agent }> = ({ agent }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  // const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
@@ -164,7 +164,7 @@ const AgentCard: React.FC<{ agent: Agent }> = ({ agent }) => {
           </div>
         </div>
 
-        {/* Bio */}
+        {/* Bio
         <p className="text-gray-600 text-sm mt-4 leading-relaxed">
           {isExpanded ? agent.bio : `${agent.bio.substring(0, 100)}...`}
         </p>
@@ -176,7 +176,7 @@ const AgentCard: React.FC<{ agent: Agent }> = ({ agent }) => {
           >
             {isExpanded ? "Show less" : "Read more"}
           </button>
-        )}
+        )} */}
 
         {/* Specialties */}
         <div className="mt-4">
@@ -208,7 +208,7 @@ const AgentCard: React.FC<{ agent: Agent }> = ({ agent }) => {
               <FaLinkedin className="w-4 h-4" />
             </button>
           </div>
-          <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 transform hover:scale-105 shadow-lg">
+          <button className="bg-gradient-to-r from-teal-600 to-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:from-teal-700 hover:to-indigo-700 transition-all duration-200 transform hover:scale-105 shadow-lg">
             Connect Now
           </button>
         </div>
@@ -237,22 +237,22 @@ const AgentsList: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
+      <div className="bg-gradient-to-r from-teal-600 to-teal-800 text-white mt-6 py-6">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Find Your Perfect Real Estate Agent
             </h1>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              Connect with experienced professionals who understand your needs and the local market
+              Connect with experienced professionals who understand your needs
             </p>
           </div>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="bg-white rounded-2xl shadow-lg p-4 mb-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <input
               type="text"
