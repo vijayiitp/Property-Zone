@@ -1,5 +1,5 @@
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+// import toast, { Toaster } from "react-hot-toast";
 
 export default function PropertyForm() {
   const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ export default function PropertyForm() {
 
   return (
     <>
-      <Toaster />
+      {/* <Toaster /> */}
       <section className="text-white min-h-screen flex flex-col justify-center items-center px-6">
         <div className="max-w-2xl text-center mb-8 px-4">
   <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 leading-snug sm:leading-tight">
