@@ -1,13 +1,21 @@
 @import "tailwindcss";
+
 body {
-  @apply bg-black  dark:bg-black dark:border-black;
-  @apply w-[80%] min-h-screen mx-auto;
-  @apply font-serif;
-  .hide-scrollbar::-webkit-scrollbar {
+  @apply bg-black dark:bg-black dark:border-black;
+  @apply min-h-screen mx-auto font-serif w-[80%];
+}
+
+.hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .hide-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+
+@media (max-width: 640px) {
+  body {
+    @apply w-full;
+  }
 }

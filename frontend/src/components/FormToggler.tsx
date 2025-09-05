@@ -42,16 +42,16 @@ const AuthToggler = () => {
         {/* Toggle Buttons */}
         <div className="flex mb-3">
           <button
-            className={`w-1/2 py-2 font-semibold rounded-l ${
-              !isSignUp ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"
-            }`}
+            className={`w-1/2 py-2 font-semibold rounded-l cursor-pointer ${
+              !isSignUp ? "bg-gradient-to-r from-teal-600 to-blue-400 text-white" : "bg-gray-200 text-gray-700"
+              }`}
             onClick={() => setIsSignUp(false)}
           >
             Sign In
           </button>
           <button
-            className={`w-1/2 py-2 font-semibold rounded-r ${
-              isSignUp ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"
+            className={`w-1/2 py-2 font-semibold rounded-r cursor-pointer ${
+              isSignUp ? "bg-gradient-to-r from-teal-600 to-blue-400 text-white" : "bg-gray-200 text-gray-700"
             }`}
             onClick={() => setIsSignUp(true)}
           >

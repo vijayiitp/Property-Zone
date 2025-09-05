@@ -33,7 +33,7 @@ export default function Header() {
               <div className="relative flex items-center cursor-pointer m-4">
                 <button onClick={() => setIsSidebarOpen(true)}>
                   <svg
-                    className="w-6 h-6 text-gray-700 hover:text-orange-400 transition-colors"
+                    className="w-6 h-6 text-white hover:text-orange-400 transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -47,8 +47,6 @@ export default function Header() {
                     ></path>
                   </svg>
                 </button>
-                {/* Optional notification badge */}
-                <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-500"></span>
               </div>
 
               {/* Profile Avatar */}
@@ -56,29 +54,75 @@ export default function Header() {
                 className="flex items-center space-x-3 cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
               >
+                {/* Profile avatar for md+ screens */}
                 <img
                   src="https://placehold.co/40x40"
                   alt="avatar"
-                  className="w-10 h-10 rounded-full border-2 border-white"
+                  className="hidden md:block w-10 h-10 rounded-full border-2 border-white"
                 />
+
+                {/* Hamburger menu for small screens */}
+                <svg
+                  className="block md:hidden w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
               </div>
 
               {/* Dropdown Menu */}
               {isOpen && (
                 <div
-                  className="absolute right-0 mt-8 w-40 bg-white rounded-lg shadow-lg p-2 grid grid-cols-1 gap-2 z-50"
+                  className="absolute right-0 mt-8 w-40 bg-gray-500 dark:bg-gray-300 rounded-lg shadow-lg p-2 flex flex-col gap-2 z-50"
                   onMouseLeave={() => setIsOpen(false)}
                 >
+                  {/* Always visible (Profile) */}
                   <Link
                     to={`/profile/${user?._id}`}
-                    className="hover:bg-gray-500 px-4 py-2 rounded text-left"
+                    className="px-4 py-2 rounded text-left hover:bg-gray-100 dark:hover:bg-gray-500"
                   >
                     Profile
                   </Link>
 
+                  {/* Extra nav links only for small & medium devices */}
+                  <div className="flex flex-col gap-2 md:hidden">
+                    <Link
+                      to="/"
+                      className="px-4 py-2 rounded text-left hover:bg-gray-100 dark:hover:bg-gray-500"
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      to="/properties"
+                      className="px-4 py-2 rounded text-left hover:bg-gray-100 dark:hover:bg-gray-500"
+                    >
+                      Properties
+                    </Link>
+                    <Link
+                      to="/agents"
+                      className="px-4 py-2 rounded text-left hover:bg-gray-100 dark:hover:bg-gray-500"
+                    >
+                      Agents
+                    </Link>
+                    <Link
+                      to="/feedback"
+                      className="px-4 py-2 rounded text-left hover:bg-gray-100 dark:hover:bg-gray-500"
+                    >
+                      Contact Us
+                    </Link>
+                  </div>
+
+                  {/* Always visible (Logout) */}
                   <button
                     onClick={handleLogout}
-                    className="hover:bg-gray-500 px-4 py-2 rounded text-left"
+                    className="px-4 py-2 rounded text-left hover:bg-gray-100 dark:hover:bg-gray-500"
                   >
                     Logout
                   </button>

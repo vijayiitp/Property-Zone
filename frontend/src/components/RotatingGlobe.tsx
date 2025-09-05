@@ -37,9 +37,10 @@ const RotatingGlobe: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full relative mx-auto my-10 rounded-xl overflow-hidden">
-      <div ref={globeRef} />
-    </div>
+    <div className="w-full relative mx-auto my-0 sm:my-0 md:my-0 lg:my-10 rounded-xl overflow-hidden flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-auto">
+  <div ref={globeRef} className="w-full h-full" />
+</div>
+
   );
 };
 

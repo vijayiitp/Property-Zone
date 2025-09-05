@@ -7,7 +7,7 @@ const Layout = () => {
     
     <>
       <Header />
-      <main className="flex-1 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 container mx-auto py-15">
+      <main className="flex-1 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 container mx-auto mt-18">
         <Outlet />
       </main>
       <Footer />

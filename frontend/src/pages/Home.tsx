@@ -13,61 +13,63 @@ const Home: React.FC = () => {
       <AppointmentSection />
       <StatsSection />
       <Property />
-      {/* <Agents /> */}
     </section>
   );
 };
 
 const Banner: React.FC = () => {
   return (
-    <div className="flex flex-row">
-      <div className="w-1/2">
+    <div className="flex flex-col md:flex-row">
+      {/* Left Column */}
+      <div className="w-full md:w-1/2">
         <PropertyForm />
       </div>
-      <div className="flex justify-end items-center w-1/2 min-h-screen">
+
+      {/* Right Column (Globe visible only on md and larger) */}
+      <div className="hidden md:flex justify-center md:justify-end items-center w-full md:w-1/2 min-h-[300px] md:min-h-screen">
         <RotatingGlobe />
       </div>
     </div>
   );
 };
 
+
 const AppointmentSection: React.FC = () => {
   return (
-    <div className="bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 rounded-2xl text-white">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div className="bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 rounded-2xl text-white py-10 sm:py-14 px-4 sm:px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+        
         {/* Left Content Block */}
-        <div className="bg-slate-800 p-8 rounded-xl shadow-lg">
-          <h2 className="text-4xl font-extrabold mb-4 leading-tight">
+        <div className="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg text-center md:text-left">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 leading-snug">
             Find your{" "}
-            <span className="text-orange-400">perfect appointment</span> the
-            easy way
+            <span className="text-orange-400">perfect appointment</span> the easy way
           </h2>
-          <p className="text-slate-300 mb-6 text-lg">
-            Discover the most efficient way to book, visit, and enjoy your
-            appointments without hassle.
+          <p className="text-slate-300 mb-6 text-base sm:text-lg">
+            Discover the most efficient way to book, visit, and enjoy your appointments without hassle.
           </p>
-          <button className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition duration-300 font-semibold">
+          <button className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition duration-300 font-semibold w-full sm:w-auto">
             Get Started
           </button>
         </div>
 
         {/* Right Grid of Action Cards */}
-        <div className="grid grid-cols-2 gap-6">
-          <div className="bg-slate-700 p-6 rounded-xl flex flex-col items-center text-center shadow-md hover:shadow-lg transition">
-            <FaSearchLocation className="text-orange-400 text-3xl mb-4" />
-            <p className="font-semibold text-white">Search your location</p>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
+          <div className="bg-slate-700 p-4 sm:p-6 rounded-xl flex flex-col items-center text-center shadow-md hover:shadow-lg transition">
+            <FaSearchLocation className="text-orange-400 text-2xl sm:text-3xl mb-3 sm:mb-4" />
+            <p className="font-semibold text-sm sm:text-base text-white">Search your location</p>
           </div>
-          <div className="bg-slate-700 p-6 rounded-xl flex flex-col items-center text-center shadow-md hover:shadow-lg transition">
-            <FaEye className="text-orange-400 text-3xl mb-4" />
-            <p className="font-semibold text-white">Visit Appointment</p>
+          <div className="bg-slate-700 p-4 sm:p-6 rounded-xl flex flex-col items-center text-center shadow-md hover:shadow-lg transition">
+            <FaEye className="text-orange-400 text-2xl sm:text-3xl mb-3 sm:mb-4" />
+            <p className="font-semibold text-sm sm:text-base text-white">Visit Appointment</p>
           </div>
-          <div className="bg-slate-700 p-6 rounded-xl flex flex-col items-center text-center shadow-md hover:shadow-lg transition">
-            <FaHome className="text-orange-400 text-3xl mb-4" />
-            <p className="font-semibold text-white">Get your dream house</p>
+          <div className="bg-slate-700 p-4 sm:p-6 rounded-xl flex flex-col items-center text-center shadow-md hover:shadow-lg transition">
+            <FaHome className="text-orange-400 text-2xl sm:text-3xl mb-3 sm:mb-4" />
+            <p className="font-semibold text-sm sm:text-base text-white">Get your dream house</p>
           </div>
-          <div className="bg-slate-700 p-6 rounded-xl flex flex-col items-center text-center shadow-md hover:shadow-lg transition">
-            <FaSmile className="text-orange-400 text-3xl mb-4" />
-            <p className="font-semibold text-white">Enjoy your Appointment</p>
+          <div className="bg-slate-700 p-4 sm:p-6 rounded-xl flex flex-col items-center text-center shadow-md hover:shadow-lg transition">
+            <FaSmile className="text-orange-400 text-2xl sm:text-3xl mb-3 sm:mb-4" />
+            <p className="font-semibold text-sm sm:text-base text-white">Enjoy your Appointment</p>
           </div>
         </div>
       </div>
@@ -104,24 +106,25 @@ const StatsSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-slate-900/90 backdrop-blur-md rounded-2xl text-white m-5 py-14">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center">
+    <section className="bg-slate-900/90 backdrop-blur-md rounded-2xl text-white m-3 sm:m-5 py-10 sm:py-14">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 text-center">
         {stats.map((stat) => (
           <div
             key={stat.id}
-            className="flex flex-col items-center space-y-3 hover:scale-105 transition-transform duration-300"
+            className="flex flex-col items-center space-y-2 sm:space-y-3 hover:scale-105 transition-transform duration-300"
           >
-            <div className="text-4xl bg-gradient-to-br from-orange-400 to-orange-600 text-white p-4 rounded-full shadow-lg">
+            <div className="text-3xl sm:text-4xl bg-gradient-to-br from-orange-400 to-orange-600 text-white p-3 sm:p-4 rounded-full shadow-lg">
               {stat.icon}
             </div>
-            <h3 className="text-3xl font-extrabold">{stat.value}</h3>
-            <p className="text-sm text-gray-300">{stat.description}</p>
+            <h3 className="text-2xl sm:text-3xl font-extrabold">{stat.value}</h3>
+            <p className="text-xs sm:text-sm text-gray-300">{stat.description}</p>
           </div>
         ))}
       </div>
     </section>
   );
 };
+
 
 const Property: React.FC = () => {
   const { properties, loading } = useAppSelector((state) => state.property);
