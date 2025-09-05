@@ -5,9 +5,6 @@ import jwt from "jsonwebtoken";
 const SignUp = async (req, res) => {
   try {
     const { name, category, email, contactNumber, password } = req.body;
-    console.log(req.body);
-
-    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res
@@ -29,8 +26,6 @@ const SignUp = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
-
-    // Send token in cookie
     res
       .status(201)
       .cookie("token", token, {
@@ -105,15 +100,21 @@ const SignIn = async (req, res) => {
   }
 };
 
-const LogOut= async (req,res)=>{
-  res.clearCookie('token', {
+const LogOut = async (req, res) => {
+  if (!req.cookies.token) {
+    return res.status(400).json({ message: "No token found" });
+  }
+
+  res.clearCookie("token", {
     httpOnly: true,
-    secure: true, 
-    sameSite: 'Strict', 
-    path: '/', 
+    sameSite: "None",   // must match SignIn
+    secure: true,       // must match SignIn
+    path: "/",          // default path, should also match
   });
-  res.status(200).json({ message: 'Logged out successfully' })
-}
+
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
 
 const getUserProfile = async (req, res) => {
   try {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { logoutUser, logout } from "../features/auth/authSlice";
+import { logoutUser } from "../features/auth/authSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 import { useAppDispatch } from "../app/hooks";
@@ -18,7 +18,6 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const handleLogout = () => {
     dispatch(logoutUser());
-    dispatch(logout());
     navigate("/login");
   };
 
@@ -174,7 +173,7 @@ export default function Header() {
            }`
                 }
               >
-                Contact
+                Contact Us
               </NavLink>
             </li>
           </ul>
